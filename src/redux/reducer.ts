@@ -1,7 +1,8 @@
-import { ADD_TODO, DELETE_TODO, UPDATE_TODO } from "./actions";
-import { todos } from "./states";
+import { ActionTypes, ADD_TODO, DELETE_TODO, UPDATE_TODO } from "./actions";
+import { todos, todosType, todoType} from "./states";
 
-export let reducer = (state = todos, action) => {
+
+export let reducer = (state:todosType = todos, action: any):todosType => {
   let newTodos = [];
   switch (action.type) {
     case ADD_TODO:
@@ -10,7 +11,7 @@ export let reducer = (state = todos, action) => {
       return newTodos;
     case DELETE_TODO:
       newTodos = [...state];
-      newTodos = newTodos.filter((todo) => {
+      newTodos = newTodos.filter((todo:todoType) => {
         return todo.id != action.payload;
       });
       return newTodos;
